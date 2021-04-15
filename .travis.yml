@@ -10,13 +10,13 @@ script:
 
 after_success:
   - docker build -t weslleydavid/multi-client ./client
-  - docker build -t weslleydavid/muilt-nginx ./nginx
-  - docker build -t weslleydavid/muilt-server ./server
-  - docker build -t weslleydavid/muilt-worker ./worker
+  - docker build -t weslleydavid/multi-nginx ./nginx
+  - docker build -t weslleydavid/multi-server ./server
+  - docker build -t weslleydavid/multi-worker ./worker
   # log in to the docker Cli
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # take those images and push them to docker hub
   - docker push weslleydavid/multi-client
-  - docker push weslleydavid/muilt-nginx
-  - docker push weslleydavid/muilt-server
-  - docker push weslleydavid/muilt-worker
+  - docker push weslleydavid/multi-nginx
+  - docker push weslleydavid/multi-server
+  - docker push weslleydavid/multi-worker
