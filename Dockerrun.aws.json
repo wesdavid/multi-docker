@@ -3,7 +3,34 @@
     "containerDefinitions": [
         {
             "name": "client",
-            "image": "weslleydavid/multi-client"
+            "image": "weslleydavid/multi-client",
+            "hostname": "client",
+            "essential": false
+        },
+        {
+            "name": "server",
+            "image": "weslleydavid/multi-server",
+            "hostname": "api",
+            "essential": false
+        },
+        {
+            "name": "worker",
+            "image": "weslleydavid/multi-worker",
+            "hostname": "worker",
+            "essential": false
+        },
+        {
+            "name": "nginx",
+            "image": "weslleydavid/multi-nginx",
+            "hostname": "nginx",
+            "essential": true,
+            "portMappings": [
+                {
+                    "hostPort": 80,
+                    "containerPort": 80
+                }
+            ],
+            "links": ["client", "servers"]
         }
     ]
 }
